@@ -15,7 +15,7 @@
 
                 <h1 class="fs-2 text-center">User info</h1>
                 <button class="btn btn-success m-1" id="addnew">Add New student</button>
-                <table class="table">
+                <table class="table" id="studentTable">
 
                     <thead>
                         <tr>
@@ -25,6 +25,12 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+
+                    <tbody>
+                        
+                    </tbody>
+
+                    
                 </table>
             </div>
 
