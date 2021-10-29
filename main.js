@@ -1,4 +1,5 @@
 
+// to read all info we must declare it at first
 loadData();
 
 $("#addnew").click(function() {
@@ -74,20 +75,28 @@ function loadData() {
                     tr += "<tr>";
 
                     for(let i in item) {
+                        
                         // console.log("this is : ",i);
                         // console.log("this is item",item);
-                        tr += '<td> ${item[i]}</td>';
+                        tr += `<td>${item[i]}</td>`;
                         
                     }
+                    tr += `<td>
+                    <a class="btn btn-info"><i class="fas fa-edit"></i></a> 
+                    <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    </td>`;
                     tr += "</tr>";
+                    
                 })
+
                 $("#studentTable tbody").append(tr);
+
             }
             
-
+            
         },
-        error : function() {
-            console.log(data)
+        error : function(data) {
+            console.log(data);
         }
     })
 
