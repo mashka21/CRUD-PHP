@@ -154,6 +154,40 @@ function fetchInfo(id) {
 
 }
 
+function deleteStudent(id) {
+    
+    let sendingData = {
+        "action" : "deleteStudentInfo",
+        "ID" : id
+    }
+
+    $.ajax({
+        method : "POST",
+        dataType : "JSON",
+        url : "API.php",
+        data : sendingData,
+        success : function(data) {
+
+            let status = data.status;
+            let responseData = data.data;
+
+            let html = '';
+            let tr = '';
+
+            if(status) {
+
+                alert(responseData);
+                loadData();
+            }            
+            
+        },
+        error : function(data) {
+            console.log(data);
+        }
+    })
+
+}
+
 $("#studentTable").on("click","a.update_info" ,function() {
     //console.log("table clicked");
 
@@ -170,7 +204,9 @@ $("#studentTable").on("click","a.delete_info" ,function() {
 
     let id = $(this).attr("delete_id");
     
-    fetchInfo(id);
+    if(confirm("Are You Sure To Delete This Student.")){
+        deleteStudent(id);
+    }
 
 })
 

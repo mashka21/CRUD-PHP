@@ -99,12 +99,7 @@ function deleteStudentInfo($conn) {
     // success or error
 
     if($result) {
-
-        while($row=$result->fetch_assoc()) {
-
-            $data [] = $row;
-
-        }
+            $data=$result;
 
         $message = array("status" => true, "data" => $data);
 
