@@ -56,7 +56,7 @@
                             <input type="text" name="stName" class="form-control" id="stName" placeholder="Enter Student Name"></input>
                         </div>
                         <div class="formgroup m-2">
-                            <input type="text" name="stClass" class="form-control" id="stClasse" placeholder="Enter Student Class"></input>
+                            <input type="text" name="stClass" class="form-control" id="stClass" placeholder="Enter Student Class"></input>
                         </div>
 
 

@@ -50,6 +50,74 @@ function readAll($conn) {
     
 }
 
+function readStudentInfo($conn) {
+
+    $date = array();
+    $message = array();
+    
+    $id = $_POST['ID'];
+
+    $query = "SELECT * FROM students WHERE ID = '$id'";
+
+    // excute the query
+    $result = $conn->query($query);
+
+    // success or error
+
+    if($result) {
+
+        while($row=$result->fetch_assoc()) {
+
+            $data [] = $row;
+
+        }
+
+        $message = array("status" => true, "data" => $data);
+
+    }else{
+
+        $message = array("status" => false, "data" => $conn->error);
+
+    }
+
+    echo json_encode($message);
+    
+}
+
+function deleteStudentInfo($conn) {
+
+    $date = array();
+    $message = array();
+    
+    $id = $_POST['ID'];
+
+    $query = "DELETE FROM students WHERE ID = '$id'";
+
+    // excute the query
+    $result = $conn->query($query);
+
+    // success or error
+
+    if($result) {
+
+        while($row=$result->fetch_assoc()) {
+
+            $data [] = $row;
+
+        }
+
+        $message = array("status" => true, "data" => $data);
+
+    }else{
+
+        $message = array("status" => false, "data" => $conn->error);
+
+    }
+
+    echo json_encode($message);
+    
+}
+
 
 // function insert/register
 function register($conn) {
@@ -72,6 +140,30 @@ function register($conn) {
     echo json_encode($data);
 
 }
+
+
+function updateStudent($conn) {
+
+    $studentId = $_POST['stID'];
+    $studentName = $_POST['stName'];
+    $studentClass = $_POST['stClass'];
+
+    $data = array();
+
+    $query = "UPDATE students set Name = '$studentName', Class = '$studentClass' where ID='$studentId'";
+    $result = $conn->query($query);
+    if($result){
+        $data = array("status"=>true, "data" => "updated SuccessFully");
+
+    }else{
+        $data = array("status"=>false, "data" => $conn->error);
+    }
+
+    echo json_encode($data);
+
+}
+
+
 
 
 if(isset($action)){
